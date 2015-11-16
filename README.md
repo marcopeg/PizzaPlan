@@ -1,4 +1,4 @@
-# FooCafe Events
+# PizzaPlan
 
 ## First Setu
 
