@@ -1,5 +1,5 @@
 {
-  "firebase": "tales",
+  "firebase": "pizzaplan",
   "public": "./dist",
   "ignore": [
     "firebase.json",
