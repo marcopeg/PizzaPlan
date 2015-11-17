@@ -1,12 +1,20 @@
 
 import { SET_VOTE, RESET } from 'actions/dashboard-actions';
 
+import {
+    PIZZA_NORMAL,
+    PIZZA_VEGGIE,
+    PIZZA_VEGAN,
+    PIZZA_GFREE,
+    PIZZA_NOPE,
+} from 'lib/pizza-types';
+
 export const initialState = {
-    normal: 0,
-    veggie: 0,
-    vegan: 0,
-    gfree: 0,
-    nopizza: 0,
+    [PIZZA_NORMAL]: 0,
+    [PIZZA_VEGGIE]: 0,
+    [PIZZA_VEGAN]: 0,
+    [PIZZA_GFREE]: 0,
+    [PIZZA_NOPE]: 0,
 };
 
 export function votesReducer(state = initialState, action) {

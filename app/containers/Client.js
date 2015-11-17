@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { PizzaOption } from 'components/PizzaOption';
+import { PIZZA_TYPES } from 'lib/pizza-types';
 
 @connect(s => {
     return {
@@ -14,14 +15,12 @@ export class Client extends React.Component {
 
     render() {
         var { ssid, vote } = this.props;
+        var options = PIZZA_TYPES.map(type => <PizzaOption key={type} type={type} currentValue={vote} />);
         return (
             <div>
                 client {ssid}
                 <div>
-                    <PizzaOption type='normal' currentValue={vote} />
-                    <PizzaOption type='veggie' currentValue={vote} />
-                    <PizzaOption type='gfree' currentValue={vote} />
-                    <PizzaOption type='nope' currentValue={vote} />
+                    {options}
                 </div>
             </div>
         );

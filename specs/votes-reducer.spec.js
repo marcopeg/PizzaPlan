@@ -1,20 +1,16 @@
 
-import { votesReducer, addVote, removeVote } from 'reducers/votes-reducer';
-import { ADD, REMOVE, add, remove } from 'actions/votes-actions';
+import { votesReducer } from 'reducers/votes-reducer';
+import { setVote, reset } from 'actions/dashboard-actions';
+import { PIZZA_NORMAL } from 'lib/pizza-types';
 
-describe.skip('votes-reducer', function() {
-    it('should handle votes increase', function() {
-        var state = votesReducer({normal:0}, add('normal'));
-        expect(state.normal).to.equal(1);
+describe('votes-reducer', function() {
+    it('should set votes', function() {
+        var state = votesReducer({[PIZZA_NORMAL]:0}, setVote(PIZZA_NORMAL, 1));
+        expect(state[PIZZA_NORMAL]).to.equal(1);
     });
 
-    it('should handle votes decrease', function() {
-        var state = votesReducer({normal:2}, remove('normal'));
-        expect(state.normal).to.equal(1);
-    });
-
-    it('should not go below Zero', function() {
-        var state = votesReducer({normal:0}, remove('normal'));
-        expect(state.normal).to.equal(0);
+    it('should reset votes', function() {
+        var state = votesReducer({[PIZZA_NORMAL]:1}, reset());
+        expect(state[PIZZA_NORMAL]).to.equal(0);
     });
 });
