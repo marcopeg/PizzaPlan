@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d17d507d3aacd2cc1277"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e28a5e5f23fab0043e9c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -31472,18 +31472,18 @@
 	Object.defineProperty(exports, '__esModule', {
 	    value: true
 	});
-	exports.setVote = setVote;
+	exports.set = set;
 	exports.reset = reset;
 	
 	var _libPizzaTypes = __webpack_require__(261);
 	
-	var SET_VOTE = 'dashboard@setVote';
-	exports.SET_VOTE = SET_VOTE;
+	var SET = 'dashboard@set';
+	exports.SET = SET;
 	var RESET = 'dashboard@reset';
 	
 	exports.RESET = RESET;
 	
-	function setVote(type, value) {
+	function set(type, value) {
 	    if (!(0, _libPizzaTypes.isValidPizza)(type)) {
 	        throw _libPizzaTypes.PIZZA_TYPE_ERROR;
 	    }
@@ -31583,11 +31583,7 @@
 	        value: function render() {
 	            var _props = this.props;
 	            var ssid = _props.ssid;
-	            var normal = _props.normal;
-	            var veggie = _props.veggie;
-	            var vegan = _props.vegan;
-	            var gfree = _props.gfree;
-	            var nope = _props.nope;
+	            var votes = _props.votes;
 	
 	            var url = _react2['default'].createElement(
 	                'span',
@@ -31600,6 +31596,20 @@
 	                )
 	            );
 	
+	            votes = Object.keys(votes).map(function (vote) {
+	                return _react2['default'].createElement(
+	                    'li',
+	                    { key: vote },
+	                    vote,
+	                    ': ',
+	                    _react2['default'].createElement(
+	                        'b',
+	                        null,
+	                        votes[vote]
+	                    )
+	                );
+	            });
+	
 	            return _react2['default'].createElement(
 	                'div',
 	                null,
@@ -31611,56 +31621,7 @@
 	                _react2['default'].createElement(
 	                    'ul',
 	                    null,
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        'Normal: ',
-	                        _react2['default'].createElement(
-	                            'b',
-	                            null,
-	                            normal
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        'Veggie: ',
-	                        _react2['default'].createElement(
-	                            'b',
-	                            null,
-	                            veggie
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        'Vegan: ',
-	                        _react2['default'].createElement(
-	                            'b',
-	                            null,
-	                            vegan
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        'Glutin Free: ',
-	                        _react2['default'].createElement(
-	                            'b',
-	                            null,
-	                            gfree
-	                        )
-	                    ),
-	                    _react2['default'].createElement(
-	                        'li',
-	                        null,
-	                        'No Pizza: ',
-	                        _react2['default'].createElement(
-	                            'b',
-	                            null,
-	                            nope
-	                        )
-	                    )
+	                    votes
 	                ),
 	                _react2['default'].createElement(
 	                    'p',
@@ -31675,11 +31636,7 @@
 	    Dashboard = (0, _reactRedux.connect)(function (s) {
 	        return {
 	            ssid: s.app.ssid,
-	            normal: s.votes.normal,
-	            veggie: s.votes.veggie,
-	            vegan: s.votes.vegan,
-	            gfree: s.votes.gfree,
-	            nope: s.votes.nope
+	            votes: s.votes
 	        };
 	    })(Dashboard) || Dashboard;
 	    return Dashboard;
@@ -31720,6 +31677,8 @@
 	
 	var _componentsPizzaOption = __webpack_require__(264);
 	
+	var _libPizzaTypes = __webpack_require__(261);
+	
 	var Client = (function (_React$Component) {
 	    _inherits(Client, _React$Component);
 	
@@ -31736,6 +31695,9 @@
 	            var ssid = _props.ssid;
 	            var vote = _props.vote;
 	
+	            var options = _libPizzaTypes.PIZZA_TYPES.map(function (type) {
+	                return _react2['default'].createElement(_componentsPizzaOption.PizzaOption, { key: type, type: type, currentValue: vote });
+	            });
 	            return _react2['default'].createElement(
 	                'div',
 	                null,
@@ -31744,10 +31706,7 @@
 	                _react2['default'].createElement(
 	                    'div',
 	                    null,
-	                    _react2['default'].createElement(_componentsPizzaOption.PizzaOption, { type: 'normal', currentValue: vote }),
-	                    _react2['default'].createElement(_componentsPizzaOption.PizzaOption, { type: 'veggie', currentValue: vote }),
-	                    _react2['default'].createElement(_componentsPizzaOption.PizzaOption, { type: 'gfree', currentValue: vote }),
-	                    _react2['default'].createElement(_componentsPizzaOption.PizzaOption, { type: 'nope', currentValue: vote })
+	                    options
 	                )
 	            );
 	        }
@@ -31798,6 +31757,8 @@
 	
 	var _servicesClientService = __webpack_require__(251);
 	
+	var _libPizzaTypes = __webpack_require__(261);
+	
 	var PizzaOption = (function (_React$Component) {
 	    _inherits(PizzaOption, _React$Component);
 	
@@ -31833,6 +31794,12 @@
 	            );
 	        }
 	    }], [{
+	        key: 'propTypes',
+	        value: {
+	            type: _react2['default'].PropTypes.oneOf(_libPizzaTypes.PIZZA_TYPES)
+	        },
+	        enumerable: true
+	    }, {
 	        key: 'defaultProps',
 	        value: {
 	            type: 'normal',
@@ -32132,7 +32099,7 @@
 	    var payload = action.payload;
 	
 	    switch (type) {
-	        case _actionsDashboardActions.SET_VOTE:
+	        case _actionsDashboardActions.SET:
 	            return setVote(state, payload);
 	        case _actionsDashboardActions.RESET:
 	            return resetVote(state, payload);
@@ -32590,13 +32557,6 @@
 	    },
 	    client: {
 	        vote: null
-	    },
-	    votes: {
-	        normal: 0,
-	        veggie: 0,
-	        vegan: 0,
-	        gfree: 0,
-	        nope: 0
 	    }
 	};
 	exports.DEV = DEV;

@@ -1,8 +1,7 @@
 
 import React from 'react';
 
-import { dispatch } from 'utils/store';
-import { clickOption } from 'services/client-service';
+import { __noop } from 'lib/mish';
 import { PIZZA_TYPES } from 'lib/pizza-types';
 
 export class PizzaOption extends React.Component {
@@ -12,13 +11,14 @@ export class PizzaOption extends React.Component {
     }
 
     static defaultProps = {
-        type: 'normal',
+        type: null,
         currentValue: null,
+        onClick: __noop,
     }
 
     onClick = e => {
-        var { type } = this.props;
-        dispatch(clickOption(type));
+        var { type, onClick } = this.props;
+        onClick(type);
     }
 
     render() {

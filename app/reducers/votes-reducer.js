@@ -1,5 +1,5 @@
 
-import { SET_VOTE, RESET } from 'actions/dashboard-actions';
+import { SET, RESET } from 'actions/dashboard-actions';
 
 import {
     PIZZA_NORMAL,
@@ -20,7 +20,7 @@ export const initialState = {
 export function votesReducer(state = initialState, action) {
     var { type, payload } = action;
     switch (type) {
-        case SET_VOTE:  return setVote(state, payload);
+        case SET:       return setVote(state, payload);
         case RESET:     return resetVote(state, payload);
         default:        return state;
     }

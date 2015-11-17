@@ -1,6 +1,6 @@
 
 import { setMode, setSsid } from 'actions/app-actions';
-import { setVote, reset } from 'actions/dashboard-actions';
+import { set as setVote, reset as resetVote } from 'actions/dashboard-actions';
 import { subscribe } from 'services/firebase-service';
 
 export const MODE_DASHBOARD = 'mode@dashboard';
@@ -25,7 +25,7 @@ export function start() {
 export function update(ssid, votes) {
     return (dispatch, getState) => {
         if (votes === null) {
-            dispatch(reset());
+            dispatch(resetVote());
         } else {
             Object.keys(votes).forEach(type => {
                 dispatch(setVote(type, votes[type]));
