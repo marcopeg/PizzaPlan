@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import { start as startClientService } from 'services/client-service';
 import { start as startDahsboardService } from 'services/dashboard-service';
 
+import { AppHeader } from 'components/AppHeader';
 import { SsidInput } from 'components/SsidInput';
+
+import pizzaIcon from 'assets/pizza.png';
 
 @connect(s => s)
 export class HomeScreen extends React.Component {
@@ -23,9 +26,13 @@ export class HomeScreen extends React.Component {
     render() {
         return (
             <div>
+                <AppHeader title='PizzaPlan' />
+                <div className='text-center'>
+                    <img src={pizzaIcon} width={180} />
+                </div>
                 <SsidInput onValue={this.startClient} />
                 <button
-                    className='btn btn-link placed-bottom'
+                    className='btn btn-link x-placed-bottom'
                     style={{marginBottom:'5%'}}
                     onClick={this.startDashboard}
                     children='Create Group &raquo;' />

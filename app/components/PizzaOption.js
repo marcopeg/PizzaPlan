@@ -12,7 +12,7 @@ export class PizzaOption extends React.Component {
 
     static defaultProps = {
         type: null,
-        style: 'success',
+        style: 'primary',
         currentValue: null,
         onClick: __noop,
     }

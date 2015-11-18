@@ -15,11 +15,16 @@ export class SsidInput extends React.Component {
     }
 
     state = {
-        value: '',
+        value: '123',
     }
 
     onChange = e => {
         var value = e.target.value;
+        this.setState({value});
+    }
+
+    onFocus = e => {
+        var value = '';
         this.setState({value});
     }
 
@@ -34,14 +39,14 @@ export class SsidInput extends React.Component {
     render() {
         var { value } = this.state;
         return (
-            <div className='container placed-center' style={{marginTop:'-20%'}}>
+            <div className='container x-placed-bottom' style={{marginBottom:'20%'}}>
                 <input
                     type='number'
                     pattern='\d*'
                     className='form-control'
-                    placeholder='123'
                     value={value}
-                    onChange={this.onChange} />
+                    onChange={this.onChange}
+                    onFocus={this.onFocus} />
             </div>
         );
     }

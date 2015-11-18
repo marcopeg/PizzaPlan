@@ -31,6 +31,10 @@ export class Client extends React.Component {
                 <AppHeader
                     title={ssid} />
 
+                <p className='lead text-center' style={{fontSize:'2rem', marginBottom:30}}>
+                    What pizza<br />do you want?
+                </p>
+
                 <PizzaOptionsList
                     options={options}
                     currentValue={vote}

@@ -1,10 +1,11 @@
 
 import { MODE_CLIENT } from 'services/client-service';
+import { MODE_DASHBOARD } from 'services/dashboard-service';
 
 export const DEV = {
     app: {
-        mode: MODE_CLIENT,
-        ssid: 123,
+        mode: null,
+        ssid: null,
     },
     dashboard: {
         reset: null,

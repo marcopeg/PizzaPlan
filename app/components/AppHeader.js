@@ -16,7 +16,7 @@ export class AppHeader extends React.Component {
         return (
             <div style={{paddingTop:20, paddingBottom:20}}>
                 <div className='jumbotron text-center'>
-                    <h3 className='display-4'>{title}</h3>
+                    <h3 className='display-4 x-app-header'>{title}</h3>
                 </div>
                 <hr style={{width:50, marginTop:20}} />
             </div>

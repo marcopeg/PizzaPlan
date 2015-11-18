@@ -6,69 +6,90 @@
 $enable-flex: true;
 $enable-rounded: true;
 
-$body-bg: #000;
-$body-color: #fff;
-
-$input-bg: #000;
-$input-color: #fff;
-
-$hr-border-color: #fff;
+$brand-primary: rgb(71, 186, 171);
 
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
 // Reset and dependencies
 @import "~bootstrap/scss/normalize";
-// @import "~bootstrap/scss/print";
-
-// Core CSS
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
-// @import "~bootstrap/scss/images";
-// @import "~bootstrap/scss/code";
 @import "~bootstrap/scss/grid";
-// @import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
-
-// Components
-// @import "~bootstrap/scss/animation";
-// @import "~bootstrap/scss/dropdown";
-// @import "~bootstrap/scss/button-group";
-// @import "~bootstrap/scss/input-group";
-// @import "~bootstrap/scss/custom-forms";
-// @import "~bootstrap/scss/nav";
-// @import "~bootstrap/scss/navbar";
-// @import "~bootstrap/scss/card";
-// @import "~bootstrap/scss/breadcrumb";
-// @import "~bootstrap/scss/pagination";
-// @import "~bootstrap/scss/pager";
-// @import "~bootstrap/scss/labels";
-// @import "~bootstrap/scss/jumbotron";
-// @import "~bootstrap/scss/alert";
-// @import "~bootstrap/scss/progress";
-// @import "~bootstrap/scss/media";
-// @import "~bootstrap/scss/list-group";
-// @import "~bootstrap/scss/responsive-embed";
-// @import "~bootstrap/scss/close";
-
-// Components w/ JavaScript
-// @import "~bootstrap/scss/modal";
-// @import "~bootstrap/scss/tooltip";
-// @import "~bootstrap/scss/popover";
-// @import "~bootstrap/scss/carousel";
-
-// Utility classes
 @import "~bootstrap/scss/utilities";
-// @import "~bootstrap/scss/utilities-background";
-// @import "~bootstrap/scss/utilities-spacing";
-// @import "~bootstrap/scss/utilities-responsive";
+
+
+
+/**
+ * Project Styles
+ */
+
+@import "./styles/mixins_css3";
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: bottom-right;
+    background-size: 100%;
+}
+
+.form-control {
+    text-align: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 3rem;
+    background: transparent;
+}
 
 .btn:focus, .btn:active:focus, .btn.active:focus{
     outline-color: transparent;
     outline-style: none;
 }
 
-@import "./styles/placed";
-@import "./styles/forms";
+.x-app-header {
+    color: $brand-primary;
+}
 
+.x-table-results {
+    tr:first-child td {
+        border-top: 0px solid $gray-lighter;
+    }
+    tr td:first-child {
+        border-right: 1px solid $gray-lighter;
+    }
+}
+
+td.x-result-label {
+    vertical-align: middle;
+}
+
+td.x-result-digit {
+    font-size: 1.5rem;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: center
+}
+
+.x-placed-bottom {
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.x-placed-center {
+    position: fixed;
+    top: 50%;
+    display: block;
+    width: 100%;
+    text-align: center;
+    @include translate(0, -50%);
+}

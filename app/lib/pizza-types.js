@@ -25,6 +25,6 @@ export function getTypeLabel(type) {
         case PIZZA_VEGGIE:  return 'Vegetarian';
         case PIZZA_VEGAN:   return 'Vegan';
         case PIZZA_GFREE:   return 'Glutin Free';
-        case PIZZA_NOPE:    return 'No Pizza';
+        case PIZZA_NOPE:    return 'It\'s ok, I don\'t want pizza';
     }
 }

@@ -2,6 +2,8 @@
 // Twitter Bootstrap is included via HTML
 require('./index.scss');
 
+import noscroll from 'utils/noscroll';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 
