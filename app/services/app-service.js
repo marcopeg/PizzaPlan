@@ -5,16 +5,17 @@ import { start as startFirebaseService } from 'services/firebase-service';
 
 export function start() {
     return (dispatch, getState) => {
-        var ssid = getSsid();
+        var hash = getHash();
         dispatch(startFirebaseService());
-        if (ssid) {
-            dispatch(startClientService(ssid));
-        } else {
+
+        if (hash.toUpperCase() === 'DASHBOARD') {
             dispatch(startDahsboardService());
+        } else if (hash.length) {
+            dispatch(startClientService(hash));
         }
     };
 }
 
-export function getSsid() {
+export function getHash() {
     return window.location.hash.replace('#', '');
 }

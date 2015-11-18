@@ -42,3 +42,40 @@ export function subscribe(ssid, callback) {
 export function getPath(ssid, type) {
     return [ssid, type].join('/');
 }
+
+/**
+ * @TODO: How to calculate an unique but simple sessionId?
+ */
+
+export function makeSsid() {
+    var val = Math.floor(Math.random() * 1000 + 1);
+    if (val < 100) {
+        val = val * 10;
+    }
+
+    return val;
+}
+
+export function createSessionId() {
+    return new Promise((resolve, reject) => {
+        var attempts = 0;
+
+        function test() {
+            if (attempts > 10) {
+                return reject();
+            }
+
+            var ssid = makeSsid();
+            _ref.child(ssid).once('value', snap => {
+                if (snap.val() === null) {
+                    resolve(ssid);
+                } else {
+                    attempts++;
+                    test();
+                }
+            });
+        }
+
+        test();
+    });
+}

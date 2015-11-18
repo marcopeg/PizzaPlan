@@ -8,6 +8,7 @@ import { MODE_DASHBOARD } from 'services/dashboard-service';
 
 import { Dashboard } from 'containers/Dashboard';
 import { Client } from 'containers/Client';
+import { HomeScreen } from 'containers/HomeScreen';
 
 @connect(s => s.app)
 export class App extends React.Component {
@@ -22,7 +23,7 @@ export class App extends React.Component {
         switch (mode) {
             case MODE_DASHBOARD:   return <Dashboard />;
             case MODE_CLIENT:      return <Client />;
-            default:               return <div>Pizza!</div>;
+            default:               return <HomeScreen />;
         }
     }
 }

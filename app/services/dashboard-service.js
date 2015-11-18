@@ -1,20 +1,16 @@
 
 import { setMode, setSsid } from 'actions/app-actions';
 import { set as setVote, reset as resetVote } from 'actions/dashboard-actions';
-import { subscribe } from 'services/firebase-service';
+import { subscribe, createSessionId } from 'services/firebase-service';
 
 export const MODE_DASHBOARD = 'mode@dashboard';
 
 export function start() {
     return (dispatch, getState) => {
-        var session = createSession();
-
-        session.then(ssid => {
+        dispatch(setMode(MODE_DASHBOARD));
+        
+        createSessionId().then(ssid => {
             dispatch(setSsid(ssid));
-            dispatch(setMode(MODE_DASHBOARD));
-        });
-
-        session.then(ssid => {
             subscribe(ssid, votes => {
                 dispatch(update(ssid, votes));
             });
@@ -32,13 +28,4 @@ export function update(ssid, votes) {
             });
         }
     };
-}
-
-/**
- * @TODO: How to calculate an unique but simple sessionId?
- */
-export function createSession() {
-    return new Promise((resolve, reject) => {
-        resolve('123');
-    });
 }
