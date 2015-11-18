@@ -5,20 +5,14 @@ import { connect } from 'react-redux';
 import { start as startClientService } from 'services/client-service';
 import { start as startDahsboardService } from 'services/dashboard-service';
 
+import { SsidInput } from 'components/SsidInput';
+
 @connect(s => s)
 export class HomeScreen extends React.Component {
 
-    state = {
-        ssid: null,
-    }
-
-    updateSsid = e => {
+    startClient = ssid => {
         var { dispatch } = this.props;
-        var ssid = e.target.value;
-        this.setState({ssid});
-        if (ssid.length === 3) {
-            dispatch(startClientService(ssid));
-        }
+        dispatch(startClientService(ssid));
     }
 
     startDashboard = e => {
@@ -27,16 +21,14 @@ export class HomeScreen extends React.Component {
     }
 
     render() {
-        var { ssid } = this.state;
         return (
             <div>
-                <input
-                    type='text'
-                    value={ssid}
-                    onChange={this.updateSsid} />
-                <button onClick={this.startDashboard}>
-                    Create Dashboard
-                </button>
+                <SsidInput onValue={this.startClient} />
+                <button
+                    className='btn btn-link placed-bottom'
+                    style={{marginBottom:'5%'}}
+                    onClick={this.startDashboard}
+                    children='Create Group &raquo;' />
             </div>
         );
     }

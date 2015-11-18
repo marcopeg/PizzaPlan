@@ -23,7 +23,6 @@
     "css-loader": "^0.16.0",
     "eslint": "^1.9.0",
     "file-loader": "^0.8.4",
-    "firebase": "^2.3.0",
     "http-server": "^0.8.5",
     "img-loader": "^1.2.0",
     "jscs": "^2.5.1",
@@ -58,6 +57,7 @@
   "dependencies": {
     "browser-request": "^0.3.3",
     "firebase": "^2.3.1",
-    "request": "^2.65.0"
+    "request": "^2.65.0",
+    "bootstrap": "git+https://github.com/twbs/bootstrap.git#v4-dev"
   }
 }

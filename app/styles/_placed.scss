@@ -1,0 +1,18 @@
+@import "./mixins_css3";
+
+.placed-bottom {
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.placed-center {
+    position: fixed;
+    top: 50%;
+    display: block;
+    width: 100%;
+    text-align: center;
+    @include translate(0, -50%);
+}
