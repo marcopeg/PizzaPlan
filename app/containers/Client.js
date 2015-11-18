@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { PIZZA_TYPES } from 'lib/pizza-types';
 import { clickOption } from 'services/client-service';
 
+import { AppHeader } from 'components/AppHeader';
 import { PizzaOptionsList } from 'components/PizzaOptionsList';
 
 @connect(s => {
@@ -26,10 +27,10 @@ export class Client extends React.Component {
 
         return (
             <div className='container'>
-                <div className='jumbotron text-center'>
-                    <h3 className='display-3'>{ssid}</h3>
-                </div>
-                <hr />
+
+                <AppHeader
+                    title={ssid} />
+
                 <PizzaOptionsList
                     options={options}
                     currentValue={vote}
