@@ -4,13 +4,15 @@
  */
 
 $enable-flex: true;
-$enable-rounded: false;
+$enable-rounded: true;
 
 $body-bg: #000;
 $body-color: #fff;
 
 $input-bg: #000;
 $input-color: #fff;
+
+$hr-border-color: #fff;
 
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
@@ -57,10 +59,15 @@ $input-color: #fff;
 // @import "~bootstrap/scss/carousel";
 
 // Utility classes
-// @import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/utilities";
 // @import "~bootstrap/scss/utilities-background";
 // @import "~bootstrap/scss/utilities-spacing";
 // @import "~bootstrap/scss/utilities-responsive";
+
+.btn:focus, .btn:active:focus, .btn.active:focus{
+    outline-color: transparent;
+    outline-style: none;
+}
 
 @import "./styles/placed";
 @import "./styles/forms";

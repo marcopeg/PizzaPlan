@@ -12,7 +12,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // Import here the component you are working on:
-// import SpecComponent from '../specs/components/FooSpec';
-// require('../app/index.scss');
+import SpecComponent from '../specs/components/PizzaOption.spec';
+require('../app/index.scss');
 
-// ReactDOM.render((<SpecComponent />), document.getElementById('app'));
+ReactDOM.render((<SpecComponent />), document.getElementById('app'));

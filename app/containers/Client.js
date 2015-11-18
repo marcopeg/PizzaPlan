@@ -2,9 +2,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { PizzaOption } from 'components/PizzaOption';
 import { PIZZA_TYPES } from 'lib/pizza-types';
 import { clickOption } from 'services/client-service';
+
+import { PizzaOptionsList } from 'components/PizzaOptionsList';
 
 @connect(s => {
     return {
@@ -21,19 +22,18 @@ export class Client extends React.Component {
 
     render() {
         var { ssid, vote } = this.props;
-        var options = PIZZA_TYPES.map(type => (
-            <PizzaOption
-                key={type}
-                type={type}
-                currentValue={vote}
-                onClick={this.onChooseOption} />
-        ));
+        var options = [...PIZZA_TYPES];
+
         return (
-            <div>
-                client {ssid}
-                <div>
-                    {options}
+            <div className='container'>
+                <div className='jumbotron text-center'>
+                    <h3 className='display-3'>{ssid}</h3>
                 </div>
+                <hr />
+                <PizzaOptionsList
+                    options={options}
+                    currentValue={vote}
+                    onValue={this.onChooseOption} />
             </div>
         );
     }

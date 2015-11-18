@@ -1,4 +1,6 @@
 
+import { MODE_CLIENT } from 'services/client-service';
+
 export const DEV = {
     app: {
         mode: null,
