@@ -8,7 +8,7 @@ export const MODE_DASHBOARD = 'mode@dashboard';
 export function start() {
     return (dispatch, getState) => {
         dispatch(setMode(MODE_DASHBOARD));
-        
+
         createSessionId().then(ssid => {
             dispatch(setSsid(ssid));
             subscribe(ssid, votes => {

@@ -25,12 +25,13 @@ export class HomeScreen extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='text-center'>
                 <AppHeader title='PizzaPlan' />
-                <div className='text-center'>
-                    <img src={pizzaIcon} width={180} />
-                </div>
-                <SsidInput onValue={this.startClient} />
+                <img src={pizzaIcon} width={180} />
+
+                <SsidInput
+                    onValue={this.startClient} />
+
                 <button
                     className='btn btn-link x-placed-bottom'
                     style={{marginBottom:'5%'}}
