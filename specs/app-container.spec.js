@@ -8,6 +8,9 @@ import { makeStore } from 'utils/store';
 
 import { App } from 'containers/App';
 
+import { MODE_CLIENT } from 'services/client-service';
+import { MODE_DASHBOARD } from 'services/dashboard-service';
+
 describe('App Container', function() {
 
     it('should render home screen', function() {
@@ -27,7 +30,7 @@ describe('App Container', function() {
     it('should render dashboard', function() {
         var store = makeStore(null, {
             app: {
-                mode: 'mode@dashboard',
+                mode: MODE_DASHBOARD,
                 ssid: 123,
             },
         });
@@ -46,7 +49,7 @@ describe('App Container', function() {
     it('should render client', function() {
         var store = makeStore(null, {
             app: {
-                mode: 'mode@client',
+                mode: MODE_CLIENT,
                 ssid: 123,
             },
         });
